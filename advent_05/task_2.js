@@ -912,22 +912,22 @@ let m = []
 
 for (let j = 0; j < input.length; j++) {
   const parts = input[j].split("")
-  let xN = [0, 7]
-  let yN = [0, 127]
+  let x = [0, 7]
+  let y = [0, 127]
 
   for (let i = 0; i < parts.length; i++) {
     if (parts[i] == "F") {
-      yN[1] = Math.floor((yN[0] + yN[1]) / 2)
+      y[1] = Math.floor((y[0] + y[1]) / 2)
     } if (parts[i] == "B") {
-      yN[0] = Math.ceil((yN[0] + yN[1]) / 2)
+      y[0] = Math.ceil((y[0] + y[1]) / 2)
     } if (parts[i] == "L") {
-      xN[1] = Math.floor((xN[0] + xN[1]) / 2)
+      x[1] = Math.floor((x[0] + x[1]) / 2)
     } if (parts[i] == "R") {
-      xN[0] = Math.ceil((xN[0] + xN[1]) / 2)
+      x[0] = Math.ceil((x[0] + x[1]) / 2)
     }
   }
 
-  const n = yN[0] * 8 + xN[0]
+  const n = y[0] * 8 + x[0]
   m.push(n)
 }
 
