@@ -1,2 +1,2 @@
-// const data = require('./input.json');
-// const data = require('./test.json');
+// const data = require('./input.txt');
+// const data = require('./test.txt');
