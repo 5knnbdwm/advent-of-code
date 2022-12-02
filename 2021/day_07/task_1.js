@@ -12,7 +12,7 @@ function fuelLevel(crab, target) {
 
 for (let i = min; i <= max; i += 1) {
   let fuel_tmp = 0
-  for (let j = 0; j < data.length; j++) {
+  for (let j = 0; j < data.length; j += 1) {
     fuel_tmp += fuelLevel(data[j], i)
   }
   if (fuel_tmp < fuel || fuel === null) {

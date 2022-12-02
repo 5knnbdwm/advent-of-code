@@ -114,7 +114,7 @@ for (let i = 0; i < data.length; i += 1) {
 
   let number = ''
 
-  for (let j = 0; j < digit.length; j++) {
+  for (let j = 0; j < digit.length; j += 1) {
     let char_keys = []
 
     digit[j].split('').forEach((item) => {

@@ -3,9 +3,9 @@ const data = require('./input.json');
 
 const days = 80
 
-for (let i = 0; i < days; i++) {
+for (let i = 0; i < days; i += 1) {
   const length = data.length
-  for (let j = 0; j < length; j++) {
+  for (let j = 0; j < length; j += 1) {
     if (data[j] === 0) {
       data[j] = 6
       data.push(8)
