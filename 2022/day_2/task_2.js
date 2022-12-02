@@ -19,7 +19,6 @@ const calculateScore = (enemyHand, ownHand) => {
   if (enemyHand === "Rock" && ownHand === "Paper") score += 6;
   else if (enemyHand === "Paper" && ownHand === "Scissors") score += 6;
   else if (enemyHand === "Scissors" && ownHand === "Rock") score += 6;
-  
   // score for drawing hands
   else if (enemyHand === ownHand) score += 3;
 
@@ -53,16 +52,15 @@ const getSignFromLetter = (letter) => {
 (async () => {
   let file = await data();
 
-  let guide = file.split("\n").map((item) => {
-    const tmp = item.split(" ");
-    return [getSignFromLetter(tmp[0]), tmp[1]];
-  });
+  let guide = file.split("\n").map((item) => item.split(" "));
 
   let finalScore = 0;
 
   for (let i = 0; i < guide.length; i++) {
     const pair = guide[i];
-    finalScore += calculateScore(pair[0], getPairingHand(pair[0], pair[1]));
+    const enemyHand = getSignFromLetter(pair[0]);
+
+    finalScore += calculateScore(enemyHand, getPairingHand(enemyHand, pair[1]));
   }
 
   console.log(finalScore);
