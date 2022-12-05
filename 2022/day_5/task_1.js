@@ -8,14 +8,14 @@ const data = async () => {
 // };
 
 const splitAtFourth = (input) => {
-  let length = input.length
+  let length = input.length;
   let arr = [];
 
   for (let i = 0; i < length; i++) {
     arr.push(input.substr(0, 3));
     input = input.substr(4);
   }
-  
+
   return arr;
 };
 
@@ -45,7 +45,6 @@ const splitAtFourth = (input) => {
     }
   }
 
-
   for (let i = 0; i < movesLines.length; i++) {
     const move = movesLines[i].split(" ");
     const count = Number(move[1]);
@@ -56,11 +55,11 @@ const splitAtFourth = (input) => {
       stacks[from].length - count,
       stacks[from].length
     );
-    
+
     toMove = toMove.reverse();
     stacks[to].push(...toMove);
-
   }
+
   console.log(
     "result:",
     Object.keys(stacks)
