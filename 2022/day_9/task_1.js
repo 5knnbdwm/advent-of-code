@@ -7,306 +7,116 @@ const data = async () => {
   return (await readFile("./test.txt")).toString();
 };
 
-// const moveTail = (head, oldHead, tail) => {
-//   const move = {
-//     x: head.x - oldHead.x,
-//     y: head.y - oldHead.y,
-//   };
-
-//   const relativePos = {
-//     x: oldHead.x - tail.x,
-//     y: oldHead.y - tail.y,
-//   };
-
-//   // moving up
-//   if (
-//     relativePos.x === -1 &&
-//     relativePos.y === 1 &&
-//     move.x === 0 &&
-//     move.y === 1
-//   ) {
-//     tail.y += 1;
-//     tail.x -= 1;
-//   } else if (
-//     relativePos.x === 0 &&
-//     relativePos.y === 1 &&
-//     move.x === 0 &&
-//     move.y === 1
-//   ) {
-//     tail.y += 1;
-//   } else if (
-//     relativePos.x === 1 &&
-//     relativePos.y === 1 &&
-//     move.x === 0 &&
-//     move.y === 1
-//   ) {
-//     tail.y += 1;
-//     tail.x += 1;
-//   }
-//   // moving right
-//   else if (
-//     relativePos.x === 1 &&
-//     relativePos.y === 1 &&
-//     move.x === 1 &&
-//     move.y === 0
-//   ) {
-//     tail.y += 1;
-//     tail.x += 1;
-//   } else if (
-//     relativePos.x === 1 &&
-//     relativePos.y === 0 &&
-//     move.x === 1 &&
-//     move.y === 0
-//   ) {
-//     tail.x += 1;
-//   } else if (
-//     relativePos.x === 1 &&
-//     relativePos.y === -1 &&
-//     move.x === 1 &&
-//     move.y === 0
-//   ) {
-//     tail.y -= 1;
-//     tail.x += 1;
-//   }
-//   // moving down
-//   else if (
-//     relativePos.x === 1 &&
-//     relativePos.y === -1 &&
-//     move.x === 0 &&
-//     move.y === -1
-//   ) {
-//     tail.y -= 1;
-//     tail.x += 1;
-//   } else if (
-//     relativePos.x === 0 &&
-//     relativePos.y === -1 &&
-//     move.x === 0 &&
-//     move.y === -1
-//   ) {
-//     tail.y -= 1;
-//   } else if (
-//     relativePos.x === -1 &&
-//     relativePos.y === -1 &&
-//     move.x === 0 &&
-//     move.y === -1
-//   ) {
-//     tail.y -= 1;
-//     tail.x -= 1;
-//   }
-//   // moving left
-//   else if (
-//     relativePos.x === -1 &&
-//     relativePos.y === -1 &&
-//     move.x === -1 &&
-//     move.y === 0
-//   ) {
-//     tail.y -= 1;
-//     tail.x -= 1;
-//   } else if (
-//     relativePos.x === -1 &&
-//     relativePos.y === 0 &&
-//     move.x === -1 &&
-//     move.y === 0
-//   ) {
-//     tail.x -= 1;
-//   } else if (
-//     relativePos.x === -1 &&
-//     relativePos.y === 1 &&
-//     move.x === -1 &&
-//     move.y === 0
-//   ) {
-//     tail.y += 1;
-//     tail.x -= 1;
-//   }
-
-//   return tail;
-// };
-const moveTail = (head, old, tail) => {
+const moveTail = (head, oldHead, tail) => {
   const move = {
-    x: head.x - old.x,
-    y: head.y - old.y,
+    x: head.x - oldHead.x,
+    y: head.y - oldHead.y,
   };
 
   const relativePos = {
-    x: old.x - tail.x,
-    y: old.y - tail.y,
+    x: oldHead.x - tail.x,
+    y: oldHead.y - tail.y,
   };
 
-  // top left
-  if (relativePos.x === -1 && relativePos.y === 1) {
-    if (move.x === -1 && move.y === -1) {
-      tail.x += -1;
-      tail.y += 0;
-    }
-
-    else if (move.x === -1 && move.y === 0) {
-      tail.x += -1;
-      tail.y += 1;
-    }
-
-    else if (move.x === -1 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 1;
-    }
-
-    else if (move.x === 0 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 1;
-    }
-
-    else if (move.x === 1 && move.y === 1) {
-      tail.x += 0;
-      tail.y += 1;
-    }
+  // moving up
+  if (
+    relativePos.x === -1 &&
+    relativePos.y === 1 &&
+    move.x === 0 &&
+    move.y === 1
+  ) {
+    tail.y += 1;
+    tail.x -= 1;
+  } else if (
+    relativePos.x === 0 &&
+    relativePos.y === 1 &&
+    move.x === 0 &&
+    move.y === 1
+  ) {
+    tail.y += 1;
+  } else if (
+    relativePos.x === 1 &&
+    relativePos.y === 1 &&
+    move.x === 0 &&
+    move.y === 1
+  ) {
+    tail.y += 1;
+    tail.x += 1;
   }
-  // top
-  if (relativePos.x === 0 && relativePos.y === 1) {
-    if (move.x === -1 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 1;
-    }
-
-    else if (move.x === 0 && move.y === 1) {
-      tail.x += 0;
-      tail.y += 1;
-    }
-
-    else if (move.x === 1 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 1;
-    }
+  // moving right
+  else if (
+    relativePos.x === 1 &&
+    relativePos.y === 1 &&
+    move.x === 1 &&
+    move.y === 0
+  ) {
+    tail.y += 1;
+    tail.x += 1;
+  } else if (
+    relativePos.x === 1 &&
+    relativePos.y === 0 &&
+    move.x === 1 &&
+    move.y === 0
+  ) {
+    tail.x += 1;
+  } else if (
+    relativePos.x === 1 &&
+    relativePos.y === -1 &&
+    move.x === 1 &&
+    move.y === 0
+  ) {
+    tail.y -= 1;
+    tail.x += 1;
   }
-  // top right
-  if (relativePos.x === 1 && relativePos.y === 1) {
-    if (move.x === -1 && move.y === 1) {
-      tail.x += 0;
-      tail.y += 1;
-    }
-
-    else if (move.x === 0 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 1;
-    }
-
-    else if (move.x === 1 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 1;
-    }
-
-    else if (move.x === 1 && move.y === 0) {
-      tail.x += 1;
-      tail.y += 1;
-    }
-
-    else if (move.x === 1 && move.y === -1) {
-      tail.x += 1;
-      tail.y += 0;
-    }
+  // moving down
+  else if (
+    relativePos.x === 1 &&
+    relativePos.y === -1 &&
+    move.x === 0 &&
+    move.y === -1
+  ) {
+    tail.y -= 1;
+    tail.x += 1;
+  } else if (
+    relativePos.x === 0 &&
+    relativePos.y === -1 &&
+    move.x === 0 &&
+    move.y === -1
+  ) {
+    tail.y -= 1;
+  } else if (
+    relativePos.x === -1 &&
+    relativePos.y === -1 &&
+    move.x === 0 &&
+    move.y === -1
+  ) {
+    tail.y -= 1;
+    tail.x -= 1;
   }
-  // right
-  if (relativePos.x === 1 && relativePos.y === 0) {
-    if (move.x === 1 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 1;
-    }
-
-    else if (move.x === 1 && move.y === 0) {
-      tail.x += 1;
-      tail.y += 0;
-    }
-
-    else if (move.x === 1 && move.y === -1) {
-      tail.x += 1;
-      tail.y += -1;
-    }
-  }
-  // bottom right
-  if (relativePos.x === 1 && relativePos.y === -1) {
-    if (move.x === 1 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 0;
-    }
-
-    else if (move.x === 1 && move.y === 0) {
-      tail.x += 1;
-      tail.y += -1;
-    }
-
-    else if (move.x === 1 && move.y === -1) {
-      tail.x += 1;
-      tail.y += -1;
-    }
-
-    else if (move.x === 0 && move.y === -1) {
-      tail.x += 1;
-      tail.y += -1;
-    }
-
-    else if (move.x === -1 && move.y === -1) {
-      tail.x += 0;
-      tail.y += -1;
-    }
-  }
-  // bottom
-  if (relativePos.x === 0 && relativePos.y === -1) {
-    if (move.x === 1 && move.y === -1) {
-      tail.x += 1;
-      tail.y += -1;
-    }
-
-    else if (move.x === 0 && move.y === -1) {
-      tail.x += 0;
-      tail.y += -1;
-    }
-
-    else if (move.x === -1 && move.y === -1) {
-      tail.x += -1;
-      tail.y += -1;
-    }
-  }
-  // bottom left
-  if (relativePos.x === -1 && relativePos.y === -1) {
-    if (move.x === 1 && move.y === -1) {
-      tail.x += 0;
-      tail.y += -1;
-    }
-
-    else if (move.x === 0 && move.y === -1) {
-      tail.x += -1;
-      tail.y += -1;
-    }
-
-    else if (move.x === -1 && move.y === -1) {
-      tail.x += -1;
-      tail.y += -1;
-    }
-
-    else if (move.x === -1 && move.y === 0) {
-      tail.x += -1;
-      tail.y += -1;
-    }
-
-    else if (move.x === -1 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 0;
-    }
-  }
-  // left
-  if (relativePos.x === -1 && relativePos.y === 0) {
-    if (move.x === -1 && move.y === -1) {
-      tail.x += -1;
-      tail.y += -1;
-    }
-
-    else if (move.x === -1 && move.y === 0) {
-      tail.x += -1;
-      tail.y += 0;
-    }
-
-    else if (move.x === -1 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 1;
-    }
+  // moving left
+  else if (
+    relativePos.x === -1 &&
+    relativePos.y === -1 &&
+    move.x === -1 &&
+    move.y === 0
+  ) {
+    tail.y -= 1;
+    tail.x -= 1;
+  } else if (
+    relativePos.x === -1 &&
+    relativePos.y === 0 &&
+    move.x === -1 &&
+    move.y === 0
+  ) {
+    tail.x -= 1;
+  } else if (
+    relativePos.x === -1 &&
+    relativePos.y === 1 &&
+    move.x === -1 &&
+    move.y === 0
+  ) {
+    tail.y += 1;
+    tail.x -= 1;
   }
 
   return tail;

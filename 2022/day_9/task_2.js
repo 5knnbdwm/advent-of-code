@@ -19,148 +19,162 @@ const data = async () => {
 //   );
 // };
 
+// const moveTail = (head, old, tail) => {
+//   const move = {
+//     x: head.x - old.x,
+//     y: head.y - old.y,
+//   };
+
+//   const relativePos = {
+//     x: old.x - tail.x,
+//     y: old.y - tail.y,
+//   };
+
+//   // top left
+//   if (relativePos.x === -1 && relativePos.y === 1) {
+//     if (move.x === -1 && move.y === -1) {
+//       tail.x += -1;
+//       tail.y += 0;
+//     } else if (move.x === -1 && move.y === 0) {
+//       tail.x += -1;
+//       tail.y += 1;
+//     } else if (move.x === -1 && move.y === 1) {
+//       tail.x += -1;
+//       tail.y += 1;
+//     } else if (move.x === 0 && move.y === 1) {
+//       tail.x += -1;
+//       tail.y += 1;
+//     } else if (move.x === 1 && move.y === 1) {
+//       tail.x += 0;
+//       tail.y += 1;
+//     }
+//   }
+//   // top
+//   if (relativePos.x === 0 && relativePos.y === 1) {
+//     if (move.x === -1 && move.y === 1) {
+//       tail.x += -1;
+//       tail.y += 1;
+//     } else if (move.x === 0 && move.y === 1) {
+//       tail.x += 0;
+//       tail.y += 1;
+//     } else if (move.x === 1 && move.y === 1) {
+//       tail.x += 1;
+//       tail.y += 1;
+//     }
+//   }
+//   // top right
+//   if (relativePos.x === 1 && relativePos.y === 1) {
+//     if (move.x === -1 && move.y === 1) {
+//       tail.x += 0;
+//       tail.y += 1;
+//     } else if (move.x === 0 && move.y === 1) {
+//       tail.x += 1;
+//       tail.y += 1;
+//     } else if (move.x === 1 && move.y === 1) {
+//       tail.x += 1;
+//       tail.y += 1;
+//     } else if (move.x === 1 && move.y === 0) {
+//       tail.x += 1;
+//       tail.y += 1;
+//     } else if (move.x === 1 && move.y === -1) {
+//       tail.x += 1;
+//       tail.y += 0;
+//     }
+//   }
+//   // right
+//   if (relativePos.x === 1 && relativePos.y === 0) {
+//     if (move.x === 1 && move.y === 1) {
+//       tail.x += 1;
+//       tail.y += 1;
+//     } else if (move.x === 1 && move.y === 0) {
+//       tail.x += 1;
+//       tail.y += 0;
+//     } else if (move.x === 1 && move.y === -1) {
+//       tail.x += 1;
+//       tail.y += -1;
+//     }
+//   }
+//   // bottom right
+//   if (relativePos.x === 1 && relativePos.y === -1) {
+//     if (move.x === 1 && move.y === 1) {
+//       tail.x += 1;
+//       tail.y += 0;
+//     } else if (move.x === 1 && move.y === 0) {
+//       tail.x += 1;
+//       tail.y += -1;
+//     } else if (move.x === 1 && move.y === -1) {
+//       tail.x += 1;
+//       tail.y += -1;
+//     } else if (move.x === 0 && move.y === -1) {
+//       tail.x += 1;
+//       tail.y += -1;
+//     } else if (move.x === -1 && move.y === -1) {
+//       tail.x += 0;
+//       tail.y += -1;
+//     }
+//   }
+//   // bottom
+//   if (relativePos.x === 0 && relativePos.y === -1) {
+//     if (move.x === 1 && move.y === -1) {
+//       tail.x += 1;
+//       tail.y += -1;
+//     } else if (move.x === 0 && move.y === -1) {
+//       tail.x += 0;
+//       tail.y += -1;
+//     } else if (move.x === -1 && move.y === -1) {
+//       tail.x += -1;
+//       tail.y += -1;
+//     }
+//   }
+//   // bottom left
+//   if (relativePos.x === -1 && relativePos.y === -1) {
+//     if (move.x === 1 && move.y === -1) {
+//       tail.x += 0;
+//       tail.y += -1;
+//     } else if (move.x === 0 && move.y === -1) {
+//       tail.x += -1;
+//       tail.y += -1;
+//     } else if (move.x === -1 && move.y === -1) {
+//       tail.x += -1;
+//       tail.y += -1;
+//     } else if (move.x === -1 && move.y === 0) {
+//       tail.x += -1;
+//       tail.y += -1;
+//     } else if (move.x === -1 && move.y === 1) {
+//       tail.x += -1;
+//       tail.y += 0;
+//     }
+//   }
+//   // left
+//   if (relativePos.x === -1 && relativePos.y === 0) {
+//     if (move.x === -1 && move.y === -1) {
+//       tail.x += -1;
+//       tail.y += -1;
+//     } else if (move.x === -1 && move.y === 0) {
+//       tail.x += -1;
+//       tail.y += 0;
+//     } else if (move.x === -1 && move.y === 1) {
+//       tail.x += -1;
+//       tail.y += 1;
+//     }
+//   }
+
+//   return tail;
+// };
+
 const moveTail = (head, old, tail) => {
-  const move = {
-    x: head.x - old.x,
-    y: head.y - old.y,
-  };
-
-  const relativePos = {
-    x: old.x - tail.x,
-    y: old.y - tail.y,
-  };
-
-  // top left
-  if (relativePos.x === -1 && relativePos.y === 1) {
-    if (move.x === -1 && move.y === -1) {
-      tail.x += -1;
-      tail.y += 0;
-    } else if (move.x === -1 && move.y === 0) {
-      tail.x += -1;
-      tail.y += 1;
-    } else if (move.x === -1 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 1;
-    } else if (move.x === 0 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 1;
-    } else if (move.x === 1 && move.y === 1) {
-      tail.x += 0;
-      tail.y += 1;
-    }
-  }
-  // top
-  if (relativePos.x === 0 && relativePos.y === 1) {
-    if (move.x === -1 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 1;
-    } else if (move.x === 0 && move.y === 1) {
-      tail.x += 0;
-      tail.y += 1;
-    } else if (move.x === 1 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 1;
-    }
-  }
-  // top right
-  if (relativePos.x === 1 && relativePos.y === 1) {
-    if (move.x === -1 && move.y === 1) {
-      tail.x += 0;
-      tail.y += 1;
-    } else if (move.x === 0 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 1;
-    } else if (move.x === 1 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 1;
-    } else if (move.x === 1 && move.y === 0) {
-      tail.x += 1;
-      tail.y += 1;
-    } else if (move.x === 1 && move.y === -1) {
-      tail.x += 1;
-      tail.y += 0;
-    }
-  }
-  // right
-  if (relativePos.x === 1 && relativePos.y === 0) {
-    if (move.x === 1 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 1;
-    } else if (move.x === 1 && move.y === 0) {
-      tail.x += 1;
-      tail.y += 0;
-    } else if (move.x === 1 && move.y === -1) {
-      tail.x += 1;
-      tail.y += -1;
-    }
-  }
-  // bottom right
-  if (relativePos.x === 1 && relativePos.y === -1) {
-    if (move.x === 1 && move.y === 1) {
-      tail.x += 1;
-      tail.y += 0;
-    } else if (move.x === 1 && move.y === 0) {
-      tail.x += 1;
-      tail.y += -1;
-    } else if (move.x === 1 && move.y === -1) {
-      tail.x += 1;
-      tail.y += -1;
-    } else if (move.x === 0 && move.y === -1) {
-      tail.x += 1;
-      tail.y += -1;
-    } else if (move.x === -1 && move.y === -1) {
-      tail.x += 0;
-      tail.y += -1;
-    }
-  }
-  // bottom
-  if (relativePos.x === 0 && relativePos.y === -1) {
-    if (move.x === 1 && move.y === -1) {
-      tail.x += 1;
-      tail.y += -1;
-    } else if (move.x === 0 && move.y === -1) {
-      tail.x += 0;
-      tail.y += -1;
-    } else if (move.x === -1 && move.y === -1) {
-      tail.x += -1;
-      tail.y += -1;
-    }
-  }
-  // bottom left
-  if (relativePos.x === -1 && relativePos.y === -1) {
-    if (move.x === 1 && move.y === -1) {
-      tail.x += 0;
-      tail.y += -1;
-    } else if (move.x === 0 && move.y === -1) {
-      tail.x += -1;
-      tail.y += -1;
-    } else if (move.x === -1 && move.y === -1) {
-      tail.x += -1;
-      tail.y += -1;
-    } else if (move.x === -1 && move.y === 0) {
-      tail.x += -1;
-      tail.y += -1;
-    } else if (move.x === -1 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 0;
-    }
-  }
-  // left
-  if (relativePos.x === -1 && relativePos.y === 0) {
-    if (move.x === -1 && move.y === -1) {
-      tail.x += -1;
-      tail.y += -1;
-    } else if (move.x === -1 && move.y === 0) {
-      tail.x += -1;
-      tail.y += 0;
-    } else if (move.x === -1 && move.y === 1) {
-      tail.x += -1;
-      tail.y += 1;
-    }
+  const newPos = {
+    x: head.x - tail.x,
+    y: head.y - tail.y,
   }
 
-  return tail;
-};
+  if (Math.abs(newPos.x) === 2 || (Math.abs(newPos.x) === 1 && Math.abs(newPos.y) === 2))
+    tail.x += 1 * (newPos.x / Math.abs(newPos.x))
+  if (Math.abs(newPos.y) === 2 || (Math.abs(newPos.y) === 1 && Math.abs(newPos.x) === 2))
+    tail.y += 1 * (newPos.y / Math.abs(newPos.y))
+
+  return tail
+}
 
 const config = {
   xMax: 15,
