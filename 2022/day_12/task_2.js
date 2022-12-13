@@ -1,11 +1,11 @@
 const { readFile, open } = require("fs/promises");
 
-// const data = async () => {
-//   return (await readFile("./input.txt")).toString();
-// };
 const data = async () => {
-  return (await readFile("./test.txt")).toString();
+  return (await readFile("./input.txt")).toString();
 };
+// const data = async () => {
+//   return (await readFile("./test.txt")).toString();
+// };
 // const data = async () => {
 //   return 'SaaabcbaaaE'
 // };
@@ -16,7 +16,7 @@ const isValidMove = (currentCell, nextCell) => {
   if (nextCell === "S") nextCell = "a";
   if (nextCell === "E") nextCell = "z";
 
-  return nextCell.charCodeAt() - currentCell.charCodeAt() <= 1;
+  return nextCell.charCodeAt() - currentCell.charCodeAt() > -2;
 };
 
 const isEnd = (end = { x: -1, y: -1 }, current = { x: -1, y: -1 }) => {
@@ -95,19 +95,12 @@ const print = (hill, openList, closedList, start, end) => {
   let openList = [hill[start.x][start.y]];
   let closedList = [];
 
-  let result = undefined;
-
   while (openList.length) {
     let currentIdx = 0;
     openList.forEach((item, idx) => {
       if (item.f < openList[currentIdx].f) currentIdx = idx;
     });
     const current = openList[currentIdx];
-
-    // if (current.height === "a") {
-    //   console.log(current);
-    //   break;
-    // }
 
     // if (isEnd(end, current)) {
     //   result = current;
@@ -144,6 +137,8 @@ const print = (hill, openList, closedList, start, end) => {
         neighbors.push(hill[current.x - 1][current.y]);
     }
 
+    if (current.height === "a") neighbors = [];
+
     for (let i = 0; i < neighbors.length; i++) {
       let neighbor = neighbors[i];
       if (!closedList.includes(neighbor)) {
@@ -162,13 +157,13 @@ const print = (hill, openList, closedList, start, end) => {
       }
     }
 
-    print(hill, openList, closedList, start, end);
+    // print(hill, openList, closedList, start, end);
   }
 
-  // if (result) console.log("result:", result.g);
-  // else console.log("no result");
-
-  console.log("openList", openList);
-
-  console.log("closedList", closedList);
+  console.log(
+    "result:",
+    closedList
+      .filter((item) => item.height === "a")
+      .sort((a, b) => a.f - b.f)[0].g
+  );
 })();
