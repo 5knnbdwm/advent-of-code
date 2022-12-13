@@ -10,16 +10,13 @@ const data = async () => {
 
 const compare = (left, right) => {
   if (typeof left === "number" && typeof right === "number") {
-    // console.log('number number')
     // console.log(left, right)
 
     return left - right;
   } else {
-    // console.log('object object')
     // console.log(left, right)
 
     if (typeof left === "number") left = [left];
-
     if (typeof right === "number") right = [right];
 
     // if (left.length === right.length)

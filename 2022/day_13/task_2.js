@@ -10,16 +10,13 @@ const data = async () => {
 
 const compare = (left, right) => {
   if (typeof left === "number" && typeof right === "number") {
-    // console.log('number number')
     // console.log(left, right)
 
     return left - right;
   } else {
-    // console.log('object object')
     // console.log(left, right)
 
     if (typeof left === "number") left = [left];
-
     if (typeof right === "number") right = [right];
 
     // if (left.length === right.length)
@@ -40,6 +37,11 @@ const compare = (left, right) => {
   packets.push([[[2]], [[6]]])
 
   let sortedPackets = packets.flat().sort((a, b) => compare(a, b)).map((item) => item.toString())
+
+  // let flat = packets.flat()
+  // flat.push([[2]])
+  // flat.push([[6]])
+  // let sortedPackets = flat.sort((a, b) => compare(a, b)).map((item) => item.toString())
 
   console.log(
     "result:",
