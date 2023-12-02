@@ -71,59 +71,40 @@ const data = async () => {
   let sandInside = true;
   let sandGrains = 0;
 
-  let n = 30;
-  while (sandInside && n) {
-    // n--
+  while (sandInside) {
     let settled = false;
-    let m = 100;
 
     let pos = [0 - iMin, 500 - jMin];
-    while (!settled && m) {
-      // m--
+    while (!settled) {
       let newPos = [...pos];
-      try {
-        if (
-          cave[pos[0] + 1] === undefined ||
-          cave[pos[0] + 1][pos[1]] === "."
-        ) {
-          if (cave[pos[0] + 1] === undefined) {
-            settled = true;
-            sandInside = false;
-          } else newPos = [newPos[0] + 1, newPos[1]];
-        } else if (
-          cave[pos[0] + 1][pos[1] - 1] === undefined ||
-          cave[pos[0] + 1][pos[1] - 1] === "."
-        ) {
-          if (cave[pos[0] + 1][pos[1] - 1] === undefined) {
-            settled = true;
-            sandInside = false;
-          } else newPos = [newPos[0] + 1, newPos[1] - 1];
-        } else if (
-          cave[pos[0] + 1][pos[1] + 1] === undefined ||
-          cave[pos[0] + 1][pos[1] + 1] === "."
-        ) {
-          if (cave[pos[0] + 1][pos[1] + 1] === undefined) {
-            settled = true;
-            sandInside = false;
-          } else newPos = [newPos[0] + 1, newPos[1] + 1];
-        }
-
-        if (newPos[0] === pos[0] && newPos[1] === pos[1]) settled = true;
-        else pos = newPos;
-      } catch (err) {
-        console.log("settled", settled);
-        console.log("sandGrains", sandGrains);
-        console.log("pos", pos);
-        console.log("newPos", newPos);
-        console.log("i", cave.length);
-        console.log("j", cave[0].length);
-        console.log("iMin", iMin);
-        console.log("iMax", iMax);
-        console.log("jMin", jMin);
-        console.log("jMax", jMax);
-        console.log(err);
-        throw err;
+      if (
+        cave[pos[0] + 1] === undefined ||
+        cave[pos[0] + 1][pos[1]] === "."
+      ) {
+        if (cave[pos[0] + 1] === undefined) {
+          settled = true;
+          sandInside = false;
+        } else newPos = [newPos[0] + 1, newPos[1]];
+      } else if (
+        cave[pos[0] + 1][pos[1] - 1] === undefined ||
+        cave[pos[0] + 1][pos[1] - 1] === "."
+      ) {
+        if (cave[pos[0] + 1][pos[1] - 1] === undefined) {
+          settled = true;
+          sandInside = false;
+        } else newPos = [newPos[0] + 1, newPos[1] - 1];
+      } else if (
+        cave[pos[0] + 1][pos[1] + 1] === undefined ||
+        cave[pos[0] + 1][pos[1] + 1] === "."
+      ) {
+        if (cave[pos[0] + 1][pos[1] + 1] === undefined) {
+          settled = true;
+          sandInside = false;
+        } else newPos = [newPos[0] + 1, newPos[1] + 1];
       }
+
+      if (newPos[0] === pos[0] && newPos[1] === pos[1]) settled = true;
+      else pos = newPos;
     }
     if (sandInside) {
       sandGrains += 1;
