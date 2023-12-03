@@ -1,13 +1,13 @@
-const {default: data} = require('./input.txt');
-// const {default: data} = require('./test.txt');
+const {default: data} = require('./file_input.txt');
+// const {default: data} = require('./file_test.txt');
 
-export default async function run(): Promise<void> {
+export default function run(){
   const lines = data.split('\n').slice(0, -1);
 
   let result = 0;
 
   for (const line of lines) {
-    const game = Number(line.replace(/\w+\s(\d+):.+/gm, '$1'));
+    // const game = Number(line.replace(/\w+\s(\d+):.+/gm, '$1'));
     let minRed = -1
     let minGreen = -1
     let minBlue = -1
@@ -31,14 +31,12 @@ export default async function run(): Promise<void> {
             minBlue = Number(value)
           }
         }
-
       }
     }
-    // console.log(game, minRed, minGreen, minBlue);
     result += minRed * minBlue * minGreen;
   }
 
-  console.log(result);
+  return result;
 }
 
-run();
+console.log('result:', run());

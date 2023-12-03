@@ -1,7 +1,7 @@
-const {default: data} = require('./input.txt');
-// const {default: data} = require('./test.txt');
+const {default: data} = require('./file_input.txt');
+// const {default: data} = require('./file_test.txt');
 
-export default async function run(): Promise<void> {
+export default function run() {
   const lines = data.split('\n').slice(0, -1);
 
   let result = 0;
@@ -11,9 +11,7 @@ export default async function run(): Promise<void> {
 
     const hands = line.replace(/Game\s\d+:\s/gm, '').split('; ').map((hand: string) => hand.split(', '));
 
-    hands: for (const hand of hands) {
-      // console.log(hand);
-
+    for (const hand of hands) {
       for (const card of hand) {
         const [value, suit] = card.split(' ');
 
@@ -35,7 +33,7 @@ export default async function run(): Promise<void> {
     result += game;
   }
 
-  console.log(result);
+  return result;
 }
 
-run();
+console.log('result:', run());

@@ -1,15 +1,13 @@
-const {default: data} = require('./input.txt');
-// const {default: data} = require('./test.txt');
+const {default: data} = require('./file_input.txt');
+// const {default: data} = require('./file_test.txt');
 
 export default async function run(): Promise<void> {
-
   const lines = data.split('\n').slice(0, -1);
 
-  // const re = new RegExp(`[^\d(one|two|three|four|five|six|seven|eight|nine)]`, 'g')
   const matches = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
   const nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
-  console.log(lines.map((line: string) => {
+  return lines.map((line: string) => {
     let num = ''
 
     f: for (let i = 0; i < line.length; i++) {
@@ -32,8 +30,7 @@ export default async function run(): Promise<void> {
     }
 
     return Number(num)
-  }).reduce((a: number, b: number) => a + b, 0))
-
+  }).reduce((a: number, b: number) => a + b, 0)
 }
 
-run();
+console.log('result:', run());

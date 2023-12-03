@@ -1,5 +1,5 @@
-// const {default: data} = require('./input.txt');
-const {default: data} = require('./test.txt');
+// const {default: data} = require('./file_input.txt');
+const {default: data} = require('./file_test.txt');
 
 export default function run() {
 

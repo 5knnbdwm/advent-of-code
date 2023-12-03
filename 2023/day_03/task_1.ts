@@ -1,5 +1,5 @@
-const {default: data} = require('./input.txt');
-// const {default: data} = require('./test.txt');
+const {default: data} = require('./file_input.txt');
+// const {default: data} = require('./file_test.txt');
 
 const adjacents = [
   {x: -1, y: -1},
@@ -38,7 +38,6 @@ export default function run() {
       if (group === undefined && char.match(/\d/)) {
         // console.log('found number', char);
         group = {key: (Math.random()).toString(36).substring(2, 7), col: [j], value: char};
-
       } else if (group !== undefined && char.match(/\d/)) {
         // console.log('add', char, group);
         group.col.push(j);
@@ -50,7 +49,6 @@ export default function run() {
           ...group,
           value: Number(group.value),
         });
-
         group = undefined;
       }
     }
