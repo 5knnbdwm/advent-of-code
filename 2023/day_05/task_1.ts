@@ -5,15 +5,13 @@ const transform = (value: number, group: string) => {
   const lines = group.split('\n');
   lines.shift();
 
-  let a: Map<string, string> = new Map()
-
+  // let a: Map<string, string> = new Map()
   let result = value
 
   for (const line of lines) {
     const [destination, source, length] = line.split(' ').map(Number);
 
     if (value >= source && value <= source + length) {
-      // console.log('found', value, destination + (value - source))
       result =  destination + (value - source)
       break
     }
@@ -26,8 +24,6 @@ export default function run() {
   const groups = data.split('\n\n');
   let seeds = groups[0].split(': ')[1].split(' ').map(Number)
   let result = -1
-
-  // console.log(transform(5, groups[1]))
 
   for (const seed of seeds) {
     let val1 = transform(seed,groups[1])

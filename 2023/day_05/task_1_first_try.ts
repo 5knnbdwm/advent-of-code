@@ -28,9 +28,7 @@ export default function run() {
   const groups = data.split('\n\n');
   let seeds = groups[0].split(': ')[1].split(' ').map(Number)
   let result = -1
-
-
-
+  
   // const seedToSoilMap = makeMaps(groups[1])
   // const soilToFertilizerMap = makeMaps(groups[2])
   // const fertilizerToWaterMap = makeMaps(groups[3])
